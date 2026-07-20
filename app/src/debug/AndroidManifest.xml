@@ -1,0 +1,20 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+
+        <!-- exported="true" is required: broadcasts sent via "adb shell am broadcast" come
+             from the "shell" UID, which differs from the app's own UID. No custom permission:
+             a "signature" permission would block adb itself; this is a local debug tool, not
+             a distributed app, so exposing these two harmless actions is an acceptable tradeoff. -->
+        <receiver
+            android:name=".receiver.CommandBroadcastReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.adbreceiver.ACTION_CHANGE_BACKGROUND" />
+                <action android:name="com.example.adbreceiver.ACTION_CHANGE_LABEL" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
