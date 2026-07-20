@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.util.Log
 import com.example.adbreceiver.ui.AppUiState
+import androidx.core.graphics.toColorInt
 
 /**
  * Single entry point that translates a received Intent (ADB broadcast) into an action on the
@@ -12,6 +13,8 @@ import com.example.adbreceiver.ui.AppUiState
  */
 object CommandDispatcher {
     private const val TAG = "CommandDispatcher"
+
+    private fun String.withHashPrefix(): String = if (startsWith("#")) this else "#$this"
 
     fun dispatch(intent: Intent) {
         Log.d(TAG, "Dispatching action=${intent.action}")
@@ -36,7 +39,7 @@ object CommandDispatcher {
     private fun apply(command: CommandAction) {
         when (command) {
             is CommandAction.ChangeBackground -> {
-                runCatching { Color.parseColor(command.colorHex) }
+                runCatching { command.colorHex.withHashPrefix().toColorInt() }
                     .onSuccess { AppUiState.setBackgroundColor(it) }
                     .onFailure { Log.w(TAG, "Invalid color: ${command.colorHex}", it) }
             }
