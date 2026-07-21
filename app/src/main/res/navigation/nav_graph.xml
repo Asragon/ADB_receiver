@@ -14,7 +14,17 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_ConcurrencyLabFragment"
+            app:destination="@id/ConcurrencyLabFragment" />
     </fragment>
+
+    <!-- Schermata didattica, indipendente dal flusso principale dell'app. -->
+    <fragment
+        android:id="@+id/ConcurrencyLabFragment"
+        android:name="com.example.adbreceiver.lab.ConcurrencyLabFragment"
+        android:label="@string/concurrency_lab_label"
+        tools:layout="@layout/fragment_concurrency_lab" />
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.adbreceiver.SecondFragment"

@@ -55,6 +55,10 @@ class FirstFragment : Fragment() {
             Log.d(TAG, "Reset label button clicked")
             AppUiState.reset(getString(R.string.default_label_text))
         }
+        binding.buttonOpenLab.setOnClickListener {
+            Log.d(TAG, "Open concurrency lab clicked")
+            findNavController().navigate(R.id.action_FirstFragment_to_ConcurrencyLabFragment)
+        }
 
         if (AppUiState.labelText.isEmpty()) {
             AppUiState.reset(getString(R.string.default_label_text))

@@ -60,5 +60,13 @@
             android:layout_marginTop="8dp"
             android:text="@string/button_reset_label" />
 
+        <!-- Ingresso al laboratorio didattico: non c'entra nulla con l'ADB. -->
+        <Button
+            android:id="@+id/button_open_lab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/button_open_lab" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

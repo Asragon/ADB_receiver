@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".lab.ConcurrencyLabFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- ============ DEMO 1: MUTEX ============ -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lab_mutex_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/lab_mutex_body" />
+
+        <TextView
+            android:id="@+id/textview_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="#1F6200EE"
+            android:padding="16dp"
+            android:textAppearance="?attr/textAppearanceHeadline4"
+            tools:text="0 / 100" />
+
+        <TextView
+            android:id="@+id/textview_counter_verdict"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lab_counter_idle"
+            tools:text="Persi 80 incrementi su 100" />
+
+        <Button
+            android:id="@+id/button_run_unsafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/lab_button_unsafe" />
+
+        <Button
+            android:id="@+id/button_run_safe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lab_button_safe" />
+
+        <!-- Prova a premerlo mentre la demo gira: la UI resta viva perche' il Mutex
+             SOSPENDE le coroutine invece di bloccare il main thread. -->
+        <Button
+            android:id="@+id/button_proof_ui_alive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lab_button_ui_alive" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:background="?android:attr/listDivider" />
+
+        <!-- ============ DEMO 2: COMPLETABLE DEFERRED ============ -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/lab_deferred_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/lab_deferred_body" />
+
+        <Button
+            android:id="@+id/button_run_wizard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/lab_button_wizard" />
+
+        <Button
+            android:id="@+id/button_two_dialogs_unsafe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lab_button_two_dialogs_unsafe" />
+
+        <Button
+            android:id="@+id/button_two_dialogs_safe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lab_button_two_dialogs_safe" />
+
+        <TextView
+            android:id="@+id/textview_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#11000000"
+            android:fontFamily="monospace"
+            android:padding="12dp"
+            android:text="@string/lab_log_empty"
+            android:textSize="12sp"
+            tools:text="10:31:02  wizard: domanda 1 -> YES" />
+
+        <Button
+            android:id="@+id/button_clear_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/lab_button_clear_log" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

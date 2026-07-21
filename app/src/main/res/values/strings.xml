@@ -14,6 +14,26 @@
     <string name="button_reset_background">Reset background</string>
     <string name="button_reset_label">Reset label</string>
 
+    <!-- Laboratorio didattico: schermata scollegata dal resto dell'app, serve solo a
+         sperimentare i concetti di concorrenza. -->
+    <string name="concurrency_lab_label">Concurrency Lab</string>
+    <string name="button_open_lab">Apri il Concurrency Lab</string>
+
+    <string name="lab_mutex_title">1. Mutex — il contatore condiviso</string>
+    <string name="lab_mutex_body">10 lavoratori fanno 10 incrementi ciascuno: il totale atteso è 100. Ogni incremento è LEGGI → pausa → SCRIVI. Prova prima senza Mutex.</string>
+    <string name="lab_counter_idle">Premi un pulsante per avviare l\'esperimento.</string>
+    <string name="lab_button_unsafe">Avvia SENZA Mutex (rotto)</string>
+    <string name="lab_button_safe">Avvia CON Mutex (corretto)</string>
+    <string name="lab_button_ui_alive">Premimi durante la demo: la UI è bloccata?</string>
+
+    <string name="lab_deferred_title">2. CompletableDeferred — il dialog che risponde</string>
+    <string name="lab_deferred_body">Un AlertDialog è un\'API a callback. Con CompletableDeferred diventa una funzione suspend che RESTITUISCE la scelta dell\'utente, e tre domande di fila tornano a essere tre righe di codice.</string>
+    <string name="lab_button_wizard">Wizard: 3 domande in sequenza</string>
+    <string name="lab_button_two_dialogs_unsafe">2 dialog insieme SENZA gate (si sovrappongono)</string>
+    <string name="lab_button_two_dialogs_safe">2 dialog insieme CON gate Mutex (in fila)</string>
+    <string name="lab_button_clear_log">Pulisci log</string>
+    <string name="lab_log_empty">(log vuoto)</string>
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
