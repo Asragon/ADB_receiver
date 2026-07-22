@@ -24,7 +24,18 @@
         android:id="@+id/ConcurrencyLabFragment"
         android:name="com.example.adbreceiver.lab.ConcurrencyLabFragment"
         android:label="@string/concurrency_lab_label"
-        tools:layout="@layout/fragment_concurrency_lab" />
+        tools:layout="@layout/fragment_concurrency_lab">
+
+        <action
+            android:id="@+id/action_ConcurrencyLabFragment_to_FlowDemoFragment"
+            app:destination="@id/FlowDemoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/FlowDemoFragment"
+        android:name="com.example.adbreceiver.lab.FlowDemoFragment"
+        android:label="@string/flow_demo_label"
+        tools:layout="@layout/fragment_flow_demo" />
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.adbreceiver.SecondFragment"

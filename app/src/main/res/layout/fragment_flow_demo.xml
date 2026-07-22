@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".lab.FlowDemoFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- 1. COLD FLOW: parte solo quando lo raccogli, ogni collector riparte da capo. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/flow_cold_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
+            android:id="@+id/textview_cold"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#11000000"
+            android:fontFamily="monospace" android:padding="12dp"
+            android:text="@string/flow_idle" tools:text="2, 4, 6 (pari, x2)" />
+        <Button
+            android:id="@+id/button_cold"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/flow_button_cold" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="24dp" android:background="?android:attr/listDivider" />
+
+        <!-- 2. STATEFLOW: un valore osservabile "sempre vivo", sempre con un valore corrente. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/flow_state_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
+            android:id="@+id/textview_state"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#1F6200EE"
+            android:padding="16dp" android:textAppearance="?attr/textAppearanceHeadline4"
+            tools:text="7" />
+        <Button
+            android:id="@+id/button_plus"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/flow_button_plus" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="24dp" android:background="?android:attr/listDivider" />
+
+        <!-- 3. OPERATORI ASINCRONI: debounce, come una barra di ricerca reale. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/flow_search_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <EditText
+            android:id="@+id/edittext_search"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:hint="@string/flow_search_hint"
+            android:importantForAutofill="no" android:inputType="text" />
+        <TextView
+            android:id="@+id/textview_search"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#11000000"
+            android:fontFamily="monospace" android:padding="12dp"
+            android:text="@string/flow_search_idle" tools:text="cerco: \'kotlin\'" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="24dp" android:background="?android:attr/listDivider" />
+
+        <!-- 4. flatMapLatest: per ogni query annulla la ricerca precedente e ne lancia una
+             nuova (async, con delay). catch{} intercetta gli errori senza far crashare. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/flow_fml_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
+            android:id="@+id/textview_fml"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#11000000"
+            android:fontFamily="monospace" android:padding="12dp"
+            android:text="@string/flow_fml_idle" tools:text="risultato per \'kotlin\'" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="24dp" android:background="?android:attr/listDivider" />
+
+        <!-- 5. combine: fonde DUE flow (il contatore e la ricerca) in un unico output che si
+             riaggiorna quando cambia uno qualsiasi dei due. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/flow_combine_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
+            android:id="@+id/textview_combine"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#11000000"
+            android:fontFamily="monospace" android:padding="12dp"
+            tools:text="count=3 | query=kotlin" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="24dp" android:background="?android:attr/listDivider" />
+
+        <!-- 6. SharedFlow: bus di EVENTI (non stato). Nessun valore corrente; chi non ascolta
+             nel momento in cui l'evento parte, lo perde. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/flow_shared_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
+            android:id="@+id/textview_shared"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#11000000"
+            android:fontFamily="monospace" android:padding="12dp"
+            android:text="@string/flow_shared_idle" tools:text="evento #3 ricevuto" />
+        <Button
+            android:id="@+id/button_emit_event"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/flow_button_emit" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="24dp" android:background="?android:attr/listDivider" />
+
+        <!-- 7. callbackFlow: trasforma un'API a callback (un CountDownTimer) in un Flow,
+             registrando il listener all'avvio e liberandolo in awaitClose. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/flow_callback_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
+            android:id="@+id/textview_callback"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#1F6200EE"
+            android:padding="16dp" android:textAppearance="?attr/textAppearanceHeadline4"
+            android:text="@string/flow_callback_idle" tools:text="3" />
+        <Button
+            android:id="@+id/button_start_timer"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/flow_button_timer" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="24dp" android:background="?android:attr/listDivider" />
+
+        <!-- 8. zip: accoppia gli elementi di due flow UNO-A-UNO, aspettando entrambi. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/flow_zip_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
+            android:id="@+id/textview_zip"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#11000000"
+            android:fontFamily="monospace" android:padding="12dp"
+            android:text="@string/flow_idle" tools:text="1A, 2B, 3C" />
+        <Button
+            android:id="@+id/button_zip"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/flow_button_zip" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="24dp" android:background="?android:attr/listDivider" />
+
+        <!-- 9. conflate: consumatore piu' LENTO del produttore. Mentre e' occupato, la coda
+             tiene solo l'ULTIMO valore -> i grezzi intermedi vengono scartati. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/flow_backpressure_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
+            android:id="@+id/textview_backpressure_raw"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:fontFamily="monospace"
+            android:text="@string/flow_backpressure_idle" tools:text="grezzi emessi: [1, 2, 3, 4]" />
+        <TextView
+            android:id="@+id/textview_backpressure"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#1F6200EE"
+            android:fontFamily="monospace" android:padding="16dp"
+            android:text="@string/flow_callback_idle" tools:text="recuperati (conflate): [1, 3]" />
+        <Button
+            android:id="@+id/button_backpressure"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/flow_button_backpressure" />
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="24dp" android:background="?android:attr/listDivider" />
+
+        <!-- 10. sample: sorgente che spara ~20 valori/sec; restituiamo SOLO l'ultimo ogni
+             secondo, scartando gli intermedi. -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/flow_sample_title"
+            android:textAppearance="?attr/textAppearanceHeadline6" />
+        <TextView
+            android:id="@+id/textview_sample_raw"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:fontFamily="monospace"
+            android:text="@string/flow_sample_idle" tools:text="grezzi emessi: 187" />
+        <TextView
+            android:id="@+id/textview_sample"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:background="#1F6200EE"
+            android:padding="16dp" android:textAppearance="?attr/textAppearanceHeadline4"
+            android:text="@string/flow_callback_idle" tools:text="187" />
+        <Button
+            android:id="@+id/button_sample"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/flow_button_sample_start" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

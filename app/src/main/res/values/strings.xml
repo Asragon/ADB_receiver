@@ -33,6 +33,39 @@
     <string name="lab_button_two_dialogs_safe">2 dialog insieme CON gate Mutex (in fila)</string>
     <string name="lab_button_clear_log">Pulisci log</string>
     <string name="lab_log_empty">(log vuoto)</string>
+    <string name="button_open_flow_demo">3. Vai alla demo sui Flow →</string>
+
+    <!-- Demo 3: Flow -->
+    <string name="flow_demo_label">Flow Demo</string>
+    <string name="flow_idle">Premi il pulsante per raccogliere il flow.</string>
+    <string name="flow_cold_title">1. Cold flow — map / filter</string>
+    <string name="flow_button_cold">Raccogli 1..6 → pari → ×2</string>
+    <string name="flow_state_title">2. StateFlow — stato osservabile</string>
+    <string name="flow_button_plus">+1</string>
+    <string name="flow_search_title">3. debounce — barra di ricerca</string>
+    <string name="flow_search_hint">Scrivi qui (min 2 caratteri)…</string>
+    <string name="flow_search_idle">La ricerca parte 400ms dopo l\'ultimo tasto.</string>
+
+    <string name="flow_fml_title">4. flatMapLatest — ricerca async, cancel-and-restart</string>
+    <string name="flow_fml_idle">Usa il campo sopra. Scrivi \'errore\' per vedere catch{}.</string>
+    <string name="flow_combine_title">5. combine — fondi due flow</string>
+    <string name="flow_shared_title">6. SharedFlow — bus di eventi</string>
+    <string name="flow_shared_idle">Nessun evento ancora. Gli eventi non hanno stato.</string>
+    <string name="flow_button_emit">Spara un evento</string>
+    <string name="flow_callback_title">7. callbackFlow — da callback a Flow</string>
+    <string name="flow_callback_idle">—</string>
+    <string name="flow_button_timer">Avvia countdown 5s</string>
+
+    <string name="flow_zip_title">8. zip — accoppia due flow uno-a-uno</string>
+    <string name="flow_button_zip">Accoppia 1,2,3 con A,B,C</string>
+    <string name="flow_backpressure_title">9. conflate — consumatore lento, tiene l\'ultimo</string>
+    <string name="flow_backpressure_idle">Sorgente ferma. Emette 1..15, uno ogni 150ms.</string>
+    <string name="flow_button_backpressure">Avvia</string>
+
+    <string name="flow_sample_title">10. sample — l\'ultimo valore ogni secondo</string>
+    <string name="flow_sample_idle">Sorgente ferma. La sorgente spara ~20 valori/sec.</string>
+    <string name="flow_button_sample_start">Avvia</string>
+    <string name="flow_button_sample_stop">Ferma</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris

@@ -127,5 +127,12 @@
             android:layout_marginTop="8dp"
             android:text="@string/lab_button_clear_log" />
 
+        <Button
+            android:id="@+id/button_open_flow_demo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/button_open_flow_demo" />
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
